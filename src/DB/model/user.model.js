@@ -1,4 +1,4 @@
-// build user model collection
+
 import  mongoose,{model, Types } from "mongoose";
 export const roleTypes={user:"User",admin:"Admin"};
 export const genderTypes={male:"male",female:"female"};
@@ -101,8 +101,8 @@ const userSchema = new mongoose.Schema(
           code: {
             type: String,
             required: true,
-            minlength: 4, // الحد الأدنى 4 أرقام
-            maxlength: 4, // الحد الأقصى 4 أرقام
+            minlength: 4, 
+            maxlength: 4, 
           },
           type: {
             type: String,
@@ -127,7 +127,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// virtual username
+
 userSchema.virtual("username").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });

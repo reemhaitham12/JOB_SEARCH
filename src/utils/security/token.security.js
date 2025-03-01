@@ -13,10 +13,7 @@ export const tokenTypes={
     refresh:"refresh"
 }
 
-export const decodedToken = async ({
-  authorization = "",
-  tokenType = "access",
-} = {}) => {
+export const decodedToken = async ({authorization = "",tokenType = tokenTypes.access} = {}) => {
  
     // const { authorization } = req.headers;
     // Correct the split operation
@@ -71,4 +68,8 @@ export const generateToken = ({
 console.log("USER_ACCESS_TOKEN:", process.env.USER_ACCESS_TOKEN);
 export const verifyToken = ({
   token = "",
-  signature = process.env.USER_ACCESS_TOKEN}={}) =>
+  signature = process.env.USER_ACCESS_TOKEN}={}) => {
+  const decoded = jwt.verify(token, signature);
+  return decoded;
+};
+
