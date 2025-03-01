@@ -6,7 +6,15 @@ const checkObjectId = (value, helper) => {
     return Types.ObjectId.isValid(value) ? value : helper.message("Invalid ObjectId");
 };
 
-
+export const generalCompany={
+    companyName: joi.string().min(3).max(100).trim().required(),
+      description: joi.string().min(10).max(500).trim().required(),
+      industry: joi.string().min(3).max(100).trim().required(),
+      address: joi.string().min(5).max(200).trim().required(),
+      companyEmail: joi.string().email({ tlds: { allow: ['com', 'net'] } }).required(), // ✅ Fix here
+      numberOfEmployees: joi.number().min(11).max(20).required(),
+      companyId: joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+}
 export const generalFields = {
     firstName:joi.string().min(2).max(50).trim().required(),
         lastName:joi.string().min(2).max(50).trim().required(),

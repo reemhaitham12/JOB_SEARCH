@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 const jobSchema= new mongoose.Schema({
     jobTittle:{
         type:String,
