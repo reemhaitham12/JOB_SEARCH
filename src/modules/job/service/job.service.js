@@ -34,7 +34,7 @@ export const updateJob = asyncHandler(async (req, res, next) => {
     return next(new Error("Job not found", { cause: 404 }));
   }
 
-  // Ensure that only the company HR or owner can update the job
+  
   if (job.companyId !== req.user.companyId) {
     return next(new Error("You are not authorized to update this job", { cause: 403 }));
   }
